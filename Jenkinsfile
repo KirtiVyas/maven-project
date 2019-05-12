@@ -4,22 +4,14 @@ pipeline{
 				stage('SCM Checkout'){steps{
 						git 'https://github.com/KirtiVyas/maven-project.git'}
 							}
-				stage('compile source code'){steps{
-							withMaven (maven: 'LocalMaven'){
-								sh 'mvn compile'}
-							}
-												}
-			 	stage('test'){steps{
-							withMaven (maven: 'LocalMaven'){
-								sh 'mvn test'}
-							}
-								}
-				stage('package'){steps{
-							withMaven (maven: 'LocalMaven'){
-								sh 'mvn package'}
-							}
-									}
-					stage('install'){steps{
+			
+			stage('Sonar Analysis'){steps{
+				withMaven (maven: 'LocalMaven'){
+			 sh 'mvn sonar:sonar clean package'
+			}
+				      }
+					       }
+				stage('install'){steps{
 							withMaven (maven: 'LocalMaven'){
 								sh 'mvn install'}
 							}
