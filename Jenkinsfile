@@ -5,8 +5,8 @@ pipeline{
 						git 'https://github.com/KirtiVyas/maven-project.git'}
 							}
 			
-			stage('Sonar Analysis'){steps{
-				withMaven (maven: 'LocalMaven'){
+				stage('Sonar Analysis'){steps{
+				withSonarQubeEnv (sonar: 'sonar'){
 			 sh 'mvn sonar:sonar clean package'
 			}
 				      }
