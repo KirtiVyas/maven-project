@@ -7,7 +7,8 @@ pipeline{
 			
 				stage('Sonar Analysis'){steps{
 				withSonarQubeEnv ('sonar'){
-			 sh 'sonar:sonar clean package'
+			withMaven (maven: 'LocalMaven'){
+			sh 'mvn package'}
 			}
 				      }
 					       }
