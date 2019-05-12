@@ -13,8 +13,10 @@ pipeline{
 				      }
 					       }
 				stage('install'){steps{
+				withSonarQubeEnv ('sonar'){
 							withMaven (maven: 'LocalMaven'){
 								sh 'mvn install'}
+							}
 							}
 							}
 			stage('deploy to tomcat'){steps
