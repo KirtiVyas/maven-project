@@ -30,7 +30,7 @@ pipeline{
 						     
 		 stage('Sonar Analysis install'){steps{
 	   withSonarQubeEnv('sonar'){
-		  withMaven(maven: LocalMaven'){
+		  withMaven(maven: 'LocalMaven'){
 		 sh 'clean install sonar:sonar}
 		 }
 	  }
