@@ -26,7 +26,7 @@ pipeline{
 			sh 'mvn clean package sonar:sonar'}
 			}
 				      }
-						       }}
+						       }
 						     
 		 stage('Sonar Analysis install'){steps{
 	   withSonarQubeEnv('sonar'){
@@ -35,7 +35,8 @@ pipeline{
 		 }
 	  }
 			    }
-				
+		}
+}
 			//stage('deploy to tomcat'){steps
 			//{
 			//sshagent(['45c07079-ce59-4923-8353-cc6f63d9622f']) {
@@ -44,5 +45,3 @@ pipeline{
 			//}
 
 						 //}
-					}
-			}
